@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Grid, TextField, Button } from "@mui/material";
 import "./style.css";
 
@@ -34,7 +34,7 @@ const MemeGenerator = () => {
   }, []);
 
   useEffect(() => {
-    if (memeImages.length != 0) {
+    if (memeImages.length !== 0) {
       const randNum = Math.floor(Math.random() * memeImages.length);
       setImage(memeImages[randNum].url);
     }
@@ -45,13 +45,13 @@ const MemeGenerator = () => {
       <Container maxWidth="xl">
         <Grid
           container
-          direction="column"
-          justifyContent="center"
+          direction="row"
+          justifyContent="cesnter"
           alignItems="center"
           spacing={2}
           sx={{ marginY: "20px", marginX: "auto" }}
         >
-          <Grid item xs={8}>
+          <Grid item xs={6}>
             <TextField
               label="Top Text"
               multiline
@@ -61,7 +61,7 @@ const MemeGenerator = () => {
               onChange={handleChange}
             />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={6}>
             <TextField
               label="Bottom Text"
               multiline
@@ -71,8 +71,12 @@ const MemeGenerator = () => {
               onChange={handleChange}
             />
           </Grid>
-          <Grid item xs={8}>
-            <Button variant="outlined" onClick={handleSubmit}>
+          <Grid item xs={12}>
+            <Button
+              variant="outlined"
+              onClick={handleSubmit}
+              sx={{ width: "200px" }}
+            >
               Change Image
             </Button>
           </Grid>
